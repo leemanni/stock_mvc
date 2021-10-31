@@ -1,0 +1,9 @@
+@charset "UTF-8";
+.footermain{
+	background-color: var(--backGround_color);
+	color: var(--fontcolor);
+}
+.footermain a:hover{
+	text-decoration: none;
+	color: white;
+}

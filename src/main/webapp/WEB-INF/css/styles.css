@@ -1,0 +1,15 @@
+@charset "UTF-8";
+/* various */
+@import url("./various.css");
+/* bootstarp */
+@import url("./bootstrap.css");
+/* screen  */
+@import url("./screen/loginmain.css");
+@import url("./screen/stocksView.css");
+@import url("./screen/footer.css");
+
+
+
+a{
+	color: inherit;
+}

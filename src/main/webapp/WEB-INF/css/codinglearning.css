@@ -1,0 +1,88 @@
+@import url("http://fonts.googleapis.com/earlyaccess/nanumgothic.css")
+
+/* 전체 영역에 스타일 정의*/
+*{
+	font-family: "Nanum Gothic"
+}
+
+/* 하이퍼링크 */
+a{
+	color: #000000;
+	text-decoration: none;
+}
+a:hover {
+	color: #bbbbbb;
+	text-decoration: none;
+	cursor: pointer;
+}
+/* 네비게이션 영역 */
+/* 배경 색상 */
+.navbar-default{
+	background-color: #000000;
+	border-color: white;
+}
+/* 네비게이션 색상 */
+.navbar-default .navbar-brand{
+	color: #ffffff;
+}
+
+.navbar-default .navbar-brand:hover,
+.navbar-default .navbar-brand:focus {
+	background-color: transparent;
+	color: tomato
+}
+
+/* 선택된 네비게이션 */
+.navbar-default .navbar-nav .active > a,
+.navbar-default .navbar-default > .active > a:hover,
+.navbar-default .navbar-default > .active > a:focus {
+	background: #000000;
+	color: yellowgr;
+}
+
+/* 내비게이션 글자에 마우스를 올렸을때 */
+.nav-default .navbar-nav > li > a:hover,
+.nav-default .navbar-nav > li > a:focus {
+	background-color: #000000;
+	color: hotpint
+}
+
+/* 드롭다운이 열렸을때 */
+.navbar-default .navbar-nav .open > a,
+.navbar-default .navbar-nav .open > a:hover,
+.navbar-default .navbar-nav .open > a:focus{
+	background: #ffffff;
+	color: skyblue;
+	text-decoration: none;
+}
+/* 내비게이션 기본 색상 */
+.navbar-default .navbar-nav{
+	color: #ffffff;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

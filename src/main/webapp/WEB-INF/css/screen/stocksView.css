@@ -1,0 +1,55 @@
+@charset "UTF-8";
+.navbar-inverse a{
+	color: var(--fontcolor);
+}
+.add-button{
+	margin-bottom: 5px;
+}
+.addAsset-submit,
+.writeMemo-submit,
+.updateAsset-submit{
+	background-color: var(--backGround_color);
+	color: var(--fontcolor);
+	transition: all 0.5s;
+}
+.addAsset-submit:hover,
+.writeMemo-submit:hover,
+.updateAsset-submit:hover,
+.addAsset-submit:active,
+.writeMemo-submit:active,
+.updateAsset-submit:active{
+	background: var(--fontcolor);
+	color: var(--backGround_color);
+}
+.writeMemo:hover,
+.writeMemo:active{
+	color: #6464ff;
+	cursor: pointer;
+}
+.memo-textArea{
+	resize: none;
+}
+.assetTable td:nth-child(2n) {
+	align: left;
+	width: 30%;
+}
+.assetTable th,{
+	background-color: #9e9e9e;
+}
+.updateTable input{
+	width: 80%;
+}
+.updateTable th{
+	background:#6464ff; 
+}
+.updateTable td{
+	align : center;
+}
+.edit-buttons{
+	margin-bottom: 5px;
+}
+
+.minus span{
+	color: tomato;
+	font-weight: 600;
+}
