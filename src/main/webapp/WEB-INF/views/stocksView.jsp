@@ -39,17 +39,18 @@
 	<div class="row total-asset">
 		<div class="col-sm-2">
 			<h5>당신의 총 자산</h5>
-			<h5>₩ <fmt:formatNumber type="number" maxFractionDigits="3" value="${stockList.totalAsset }"/></h5>
+			<h5>₩ <fmt:formatNumber type="number" maxFractionDigits="3" value="${userStockList.totalAsset }"/></h5>
 		</div>
 		<div class="col-sm-2">
 			<h5>당신의 수익률</h5>
-			<h5><fmt:formatNumber type="percent" minIntegerDigits="1" pattern="###.00%" value="${stockList.totalRatio}"/></h5>
+			<h5><fmt:formatNumber type="percent" minIntegerDigits="1" pattern="###.00%" value="${userStockList.totalRatio}"/></h5>
 		</div>
 	</div>
 	<span class="notice">종목 이름을 클릭하면 메모기능이 활성화 됩니다.</span>
-	<c:set var="list" value="${stockList.stockList}"/>
+	<c:set var="list" value="${userStockList.stockList}"/>
 	<c:if test="${list.size() > 0}">
 		<c:forEach var="vo" items="${list}">
+			${stock}
 			<c:if test="${stock.name!=vo.name}">
 			<table class="table table-hover assetTable">
 				<thead>
@@ -85,7 +86,7 @@
 						</td>
 						<td>
 							₩ 
-							<fmt:formatNumber type="number" maxFractionDigits="3" value="${vo.p_price}"/>
+							<fmt:formatNumber type="number" maxFractionDigits="3" value="${vo.pPrice}"/>
 						</td>
 					</tr>
 					<tr>
@@ -104,7 +105,7 @@
 						</td>
 						<td>
 							₩ 
-							<fmt:formatNumber type="number" maxFractionDigits="3" value="${vo.c_price}"/>
+							<fmt:formatNumber type="number" maxFractionDigits="3" value="${vo.cPrice}"/>
 						</td>
 					</tr>
 				</tbody>
@@ -119,7 +120,7 @@
 			</c:if>
 			<!-- 자산 수정 -->
 			<c:if test="${stock.name==vo.name}">
-				<form action="stock.jsp" class="updateAsset-form" method="post">
+				<form action="update" class="updateAsset-form" method="post">
 					<table class="table table-hover updateTable">
 						<thead>
 							<tr>
@@ -156,7 +157,7 @@
 								</td>
 								<td colspan="2">
 									<input type="text" class="form-control" required="required"
-									 name="pPrice" value="${stock.p_price}">
+									 name="pPrice" value="${stock.pPrice}">
 								</td>
 							</tr>
 							<tr>
@@ -165,7 +166,7 @@
 								</td>
 								<td colspan="2">
 									<input type="text" class="form-control" required="required"
-									 name="cPrice" value="${stock.c_price}">
+									 name="cPrice" value="${stock.cPrice}">
 								</td>
 							</tr>
 						</tbody>
@@ -207,17 +208,16 @@
 					나의 자산 추가하기
 				</h4>
 			</div>
-			<form action="stock.jsp?" class="addAsset-form" method="post">
-			<!-- <form id="addAsset-form"> -->
-				<div class="modal-body addAsset-form">
+			<form action="insert" class="addAsset-form" method="post">
+			<!-- <form id="addAsset-form" class="addAsset-form"> -->
+				<div class="modal-body ">
 						<input type="text" class="form-control" required="required" name="name" placeholder="종목명"><br/>
 						<input type="text" class="form-control" required="required" name="ownStocks" placeholder="보유주식 수"><br/>
 						<input type="text" class="form-control" required="required" name="pPrice" placeholder="구매가"><br/>
 						<input type="text" class="form-control" required="required" name="cPrice" placeholder="현재가"><br/>
-						<input type="hidden" name="job" value="insert">
 				</div>
 				<div class="modal-footer">
-					<button type="submit" class="btn btn-deafault addAsset-submit" >
+					<button type="submit" class="btn btn-deafault addAsset-submit" onclick="insert()">
 						자산추가
 					</button>
 					 <button type="button" class="btn btn-default" data-dismiss="modal" onclick="clickClose()">

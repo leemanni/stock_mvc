@@ -13,6 +13,7 @@
 </head>
 <body>
 <div class="container">
+	
 	<header class="login-header">
 		<c:set var="flag" value="${flag}"/>
 		<a href="#">
@@ -34,7 +35,7 @@
 		</c:if>
 	</header>
 	
-	<form class="login-form" action="main.jsp" method="post" >
+	<form class="login-form" action="loginOK" method="post" >
 		<input type="text" id="id" name="id" placeholder="Your ID">
 		<input type="password" id="pw" name="pw" placeholder="Your PW">
 		<input class="login-form__submit" type="submit" value="Login">

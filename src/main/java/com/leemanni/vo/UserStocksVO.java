@@ -7,8 +7,8 @@ package com.leemanni.vo;
 public class UserStocksVO {
 	private String name;
 	private int ownStocks;
-	private int p_price;	// 구매 가격
-	private int c_price;	// 현재 가격
+	private int pPrice;	// 구매 가격
+	private int cPrice;	// 현재 가격
 	private float ratio;		// 수익률(DB x)
 	private int totalPrice;	// 자산가치(DB x)
 	private int p_totalPrice;	// 구매기준 자산가치(DB x)
@@ -17,13 +17,6 @@ public class UserStocksVO {
 	public UserStocksVO() {;}
 
 
-	public UserStocksVO(String name, int ownStocks, int p_price, int c_price) {
-		this.name = name;
-		this.ownStocks = ownStocks;
-		this.p_price = p_price;
-		this.c_price = c_price;
-		calculate(ownStocks, p_price, c_price);
-	}
 	/**
 	 * @param ownStocks
 	 * @param p_price
@@ -31,10 +24,10 @@ public class UserStocksVO {
 	 * @result 수익률 및 자산 가치 계산
 	 * 	
 	 */
-	private void calculate(int ownStocks, int p_price, int c_price) {
-		totalPrice = ownStocks * c_price;
-		p_totalPrice = ownStocks * p_price;
-		ratio = (float)(c_price - p_price) / p_price;
+	public void calculate() {
+		totalPrice = ownStocks * cPrice;
+		p_totalPrice = ownStocks * pPrice;
+		ratio = (float)(cPrice - pPrice) / pPrice;
 	}
 
 
@@ -58,23 +51,23 @@ public class UserStocksVO {
 	}
 
 
-	public int getP_price() {
-		return p_price;
+	public int getpPrice() {
+		return pPrice;
 	}
 
 
-	public void setP_price(int p_price) {
-		this.p_price = p_price;
+	public void setpPrice(int pPrice) {
+		this.pPrice = pPrice;
 	}
 
 
-	public int getC_price() {
-		return c_price;
+	public int getcPrice() {
+		return cPrice;
 	}
 
 
-	public void setC_price(int c_price) {
-		this.c_price = c_price;
+	public void setcPrice(int cPrice) {
+		this.cPrice = cPrice;
 	}
 
 
@@ -110,13 +103,9 @@ public class UserStocksVO {
 
 	@Override
 	public String toString() {
-		return "name=" + name + "&ownStocks=" + ownStocks + "&p_price=" + p_price + "&c_price="
-				+ c_price + "&ratio=" + ratio + "&totalPrice=" + totalPrice + "&p_totalPrice=" + p_totalPrice;
+		return "UserStocksVO [name=" + name + ", ownStocks=" + ownStocks + ", pPrice=" + pPrice + ", cPrice=" + cPrice
+				+ ", ratio=" + ratio + ", totalPrice=" + totalPrice + ", p_totalPrice=" + p_totalPrice + "]";
 	}
 
-
-	
-	
-	
 	
 }

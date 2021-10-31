@@ -3,6 +3,10 @@
  * 속성 추가 삭제 용
  */
 
+function clickClose() {
+	$('.addAsset-form').reset();
+}
+
 const stocks = document.getElementsByClassName('assetTable table')
 const btns = document.querySelectorAll('.edit-buttons')
 
@@ -20,10 +24,10 @@ for (var i = 0; i < stocks.length; i++) {
 
 function deleteFuntion(obj) {
 	const name = obj;
-	location.href = '../jsp/stock.jsp?job=delete&name='+encodeURIComponent(name);
+	location.href = 'delete?name='+obj
 }
 
 function updateFunction(obj) {
 //	console.log(obj);
-	location.href = '../jsp/stock.jsp?job=show&name='+obj;
+	location.href = 'show?name='+obj;
 }

@@ -5,6 +5,7 @@
 
 	<typeAliases>
 		<typeAlias type="com.leemanni.vo.UserStocksVO" alias="vo"/>
+		<typeAlias type="com.leemanni.vo.LoginVO" alias="logVO"/>
 	</typeAliases>
 </configuration>
 	
