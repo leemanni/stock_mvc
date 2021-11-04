@@ -46,11 +46,11 @@
 			<h5><fmt:formatNumber type="percent" minIntegerDigits="1" pattern="###.00%" value="${userStockList.totalRatio}"/></h5>
 		</div>
 	</div>
-	<span class="notice">종목 이름을 클릭하면 메모기능이 활성화 됩니다.</span>
+<!-- 	<span class="notice">종목 이름을 클릭하면 메모기능이 활성화 됩니다.</span> -->
 	<c:set var="list" value="${userStockList.stockList}"/>
 	<c:if test="${list.size() > 0}">
 		<c:forEach var="vo" items="${list}">
-			${stock}
+		<%-- 	${stock} --%>
 			<c:if test="${stock.name!=vo.name}">
 			<table class="table table-hover assetTable">
 				<thead>
