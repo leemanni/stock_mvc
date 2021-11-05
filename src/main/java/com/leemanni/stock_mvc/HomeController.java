@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,6 +49,8 @@ public class HomeController {
 		int check = dao.loginOK(loginVO);
 //		System.out.println(check);
 		if(check ==1 ){
+			HttpSession session = request.getSession();
+			session.setAttribute("ok", "true");
 			return "redirect:stocksView";
 		}else{
 			model.addAttribute("check", check);
@@ -62,23 +65,34 @@ public class HomeController {
 		GenericXmlApplicationContext context = new GenericXmlApplicationContext("classpath:application_context.xml");
 		UserStockList userStockList = context.getBean("userStockList", UserStockList.class);
 		
-		// 각 종목별 및 전체 자산 수익률 계산
-		ArrayList<UserStocksVO> list = dao.selectList();
-		for (UserStocksVO userStocksVO : list) {
-			userStocksVO.calculate();
-		}
-		userStockList.setStockList(list);
-//		System.out.println(list);
-		UserStocksVO stock = null;
+		HttpSession session = request.getSession();
+		String check = "";
 		try {
-			stock = dao.selectStock(request.getParameter("name"));
-		} catch (Exception e) {}
-		model.addAttribute("userStockList", userStockList);
-		model.addAttribute("stock", stock);
-//		System.out.println(stocksVO);
-//		System.out.println("name : " + request.getParameter("name"));
-		context.close();
-		return "stocksView";
+			check = (String) session.getAttribute("ok");
+			System.out.println(check);
+			if(check.equals("true")) {
+				// 각 종목별 및 전체 자산 수익률 계산
+				ArrayList<UserStocksVO> list = dao.selectList();
+				for (UserStocksVO userStocksVO : list) {
+					userStocksVO.calculate();
+				}
+				userStockList.setStockList(list);
+				//		System.out.println(list);
+				UserStocksVO stock = null;
+				try {
+					stock = dao.selectStock(request.getParameter("name"));
+				} catch (Exception e) {}
+				model.addAttribute("userStockList", userStockList);
+				model.addAttribute("stock", stock);
+				//		System.out.println(stocksVO);
+				//		System.out.println("name : " + request.getParameter("name"));
+				context.close();
+				return "stocksView";
+			}
+		} catch (NullPointerException e) {}
+		
+		return "loginMain";
+		
 	}
 	
 	
